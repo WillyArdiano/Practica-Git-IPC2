@@ -102,17 +102,10 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-<<<<<<< HEAD
-                                  <Component id="jButton2" max="32767" attributes="0"/>
-                                  <Component id="jButton3" min="-2" pref="213" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jButton1" alignment="1" min="-2" pref="213" max="-2" attributes="0"/>
-=======
                                   <Component id="btnRegistrarLibro" max="32767" attributes="0"/>
                                   <Component id="btnregistrarLibroArchivo" min="-2" pref="213" max="-2" attributes="0"/>
                               </Group>
                               <Component id="btnRegistrarEstudiante" alignment="1" min="-2" pref="213" max="-2" attributes="0"/>
->>>>>>> Registros
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -164,19 +157,11 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD
-                      <Component id="jButton1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton3" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
-=======
                       <Component id="btnRegistrarEstudiante" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnregistrarLibroArchivo" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
->>>>>>> Registros
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="3" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -185,11 +170,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD
-                      <Component id="jButton2" min="-2" pref="32" max="-2" attributes="0"/>
-=======
                       <Component id="btnRegistrarLibro" min="-2" pref="32" max="-2" attributes="0"/>
->>>>>>> Registros
                   </Group>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
@@ -223,11 +204,7 @@
             <Property name="text" type="java.lang.String" value="Importar Nuevos Libros(archivo)"/>
           </Properties>
         </Component>
-<<<<<<< HEAD
-        <Component class="javax.swing.JButton" name="jButton1">
-=======
         <Component class="javax.swing.JButton" name="btnRegistrarEstudiante">
->>>>>>> Registros
           <Properties>
             <Property name="text" type="java.lang.String" value="IR"/>
           </Properties>
@@ -240,12 +217,6 @@
             <Property name="text" type="java.lang.String" value="Ingresar Nuevo Libro"/>
           </Properties>
         </Component>
-<<<<<<< HEAD
-        <Component class="javax.swing.JButton" name="jButton2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="IR"/>
-          </Properties>
-=======
         <Component class="javax.swing.JButton" name="btnRegistrarLibro">
           <Properties>
             <Property name="text" type="java.lang.String" value="IR"/>
@@ -254,7 +225,6 @@
             <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRegistrarLibroMouseReleased"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarLibroActionPerformed"/>
           </Events>
->>>>>>> Registros
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
           <Properties>
@@ -300,11 +270,7 @@
             <Property name="text" type="java.lang.String" value="REGISTRAR"/>
           </Properties>
         </Component>
-<<<<<<< HEAD
-        <Component class="javax.swing.JButton" name="jButton3">
-=======
         <Component class="javax.swing.JButton" name="btnregistrarLibroArchivo">
->>>>>>> Registros
           <Properties>
             <Property name="text" type="java.lang.String" value="IR"/>
           </Properties>
@@ -346,17 +312,6 @@
         <Component class="javax.swing.JComboBox" name="jComboBox1">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-<<<<<<< HEAD
-              <StringArray count="6">
-                <StringItem index="0" value="Libros que deben ser entregados hoy"/>
-                <StringItem index="1" value="Libros en Mora"/>
-                <StringItem index="2" value="Ganancias "/>
-                <StringItem index="3" value="Prestamos por Estudiante"/>
-                <StringItem index="4" value="Prestamos por Carrera"/>
-                <StringItem index="5" value=" "/>
-              </StringArray>
-            </Property>
-=======
               <StringArray count="7">
                 <StringItem index="0" value="reportes"/>
                 <StringItem index="1" value="Libros que deben ser entregados hoy"/>
@@ -370,7 +325,6 @@
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor Por defecto"/>
             </Property>
->>>>>>> Registros
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
