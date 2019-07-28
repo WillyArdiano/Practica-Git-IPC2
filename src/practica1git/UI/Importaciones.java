@@ -5,11 +5,16 @@
  */
 package practica1git.UI;
 
+import java.awt.Color;
+import java.io.File;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author jessiel
  */
 public class Importaciones extends javax.swing.JDialog {
+    File archivo;
 
     /**
      * Creates new form Impotaciones
@@ -17,6 +22,8 @@ public class Importaciones extends javax.swing.JDialog {
     public Importaciones(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        unDiseño();
+        buscadorArchivo = new JFileChooser();
     }
 
     /**
@@ -29,75 +36,90 @@ public class Importaciones extends javax.swing.JDialog {
     private void initComponents() {
 
         lblImportarDatos = new javax.swing.JLabel();
+        btnAbrirArchivo = new javax.swing.JButton();
+        btnImportarDatos = new javax.swing.JButton();
+        lblTexto = new javax.swing.JLabel();
+        lblArchivoAImportar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(206, 234, 123));
+        setForeground(new java.awt.Color(201, 132, 132));
 
         lblImportarDatos.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         lblImportarDatos.setText("IMPORTAR DATOS");
+
+        btnAbrirArchivo.setText("Abrir Archivo");
+        btnAbrirArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbrirArchivoActionPerformed(evt);
+            }
+        });
+
+        btnImportarDatos.setText("IMPORTAR DATOS");
+
+        lblTexto.setText("ARCHIVO A IMPORTAR");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnImportarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
             .addGroup(layout.createSequentialGroup()
-                .addGap(343, 343, 343)
-                .addComponent(lblImportarDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(366, 366, 366))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAbrirArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblImportarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(216, 216, 216)
+                        .addComponent(lblTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(267, 267, 267)
+                        .addComponent(lblArchivoAImportar)))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblImportarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 454, Short.MAX_VALUE))
+                .addGap(96, 96, 96)
+                .addComponent(btnAbrirArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(lblTexto)
+                .addGap(18, 18, 18)
+                .addComponent(lblArchivoAImportar)
+                .addGap(58, 58, 58)
+                .addComponent(btnImportarDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(22, 22, 22))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Importaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Importaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Importaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Importaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void btnAbrirArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirArchivoActionPerformed
+        // TODO add your handling code here:
+        //buscadorArchivo.showDialog(this, "ABRIR ARCHIVO");
+        if (buscadorArchivo.showDialog(this, "Buscador Archivo")==JFileChooser.APPROVE_OPTION) {
+            archivo = buscadorArchivo.getSelectedFile();
+            lblArchivoAImportar.setText(archivo.getName());
         }
-        //</editor-fold>
-        //</editor-fold>
+    }//GEN-LAST:event_btnAbrirArchivoActionPerformed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Importaciones dialog = new Importaciones(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+    private void unDiseño(){
+        setLocation(400,100);
+        setBackground(Color.CYAN);
     }
-
+    
+    private JFileChooser buscadorArchivo;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAbrirArchivo;
+    private javax.swing.JButton btnImportarDatos;
+    private javax.swing.JLabel lblArchivoAImportar;
     private javax.swing.JLabel lblImportarDatos;
+    private javax.swing.JLabel lblTexto;
     // End of variables declaration//GEN-END:variables
 }

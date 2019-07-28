@@ -7,7 +7,6 @@ package practica1git.UI;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 /**
  *
@@ -289,6 +288,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     private Importaciones importaciones;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnImportar;
     private javax.swing.JPanel fondoTitulo;
