@@ -10,13 +10,18 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import javax.swing.JFileChooser;
+import practica1git.Backend.Libro;
 
 /**
  *
  * @author jessiel
  */
 public class Importaciones extends javax.swing.JDialog {
+    
     File archivo;
+    int contadorLibro;
+    int contadorEstudiante;
+    int contadorPrestamo;
 
     /**
      * Creates new form Impotaciones
@@ -138,8 +143,30 @@ public class Importaciones extends javax.swing.JDialog {
             
             while ((fila=buferLector.readLine())!=null) {                
                 System.out.println(" "+fila);
+                
+                if(fila=="LIBRO"){
+                    //guardarlibro  
+                    Libro libro = new Libro();
+                    for (int i = 0; i < 4; i++) {
+                        libro.setTitulo(buferLector.readLine());
+                        libro.setAutor(buferLector.readLine());
+                        libro.setCodigo(buferLector.readLine());
+                        libro.setCantidad(Integer.parseInt(buferLector.readLine()));
+                    }
+                    
+                }else if(fila=="ESTUDIANTE"){
+                    //guardarestudiante
+                }else if(fila=="PRESTAMO"){
+                    //guardarprestamo
+                }else{
+                    //guardarregistroignorado
+                }
+                
             }
             
+            
+
+                
             
         } catch (Exception e) {
         }
