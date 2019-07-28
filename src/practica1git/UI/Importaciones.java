@@ -6,7 +6,9 @@
 package practica1git.UI;
 
 import java.awt.Color;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import javax.swing.JFileChooser;
 
 /**
@@ -56,6 +58,11 @@ public class Importaciones extends javax.swing.JDialog {
         });
 
         btnImportarDatos.setText("IMPORTAR DATOS");
+        btnImportarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportarDatosActionPerformed(evt);
+            }
+        });
 
         lblTexto.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
         lblTexto.setText("ARCHIVO A IMPORTAR:");
@@ -112,6 +119,11 @@ public class Importaciones extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnAbrirArchivoActionPerformed
 
+    private void btnImportarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarDatosActionPerformed
+        // TODO add your handling code here:
+        importarDatos(archivo);
+    }//GEN-LAST:event_btnImportarDatosActionPerformed
+
     private void unDiseño(){
         setLocation(400,100);
         setBackground(Color.CYAN);
@@ -119,6 +131,18 @@ public class Importaciones extends javax.swing.JDialog {
     
     public void importarDatos( File archivoTXT ){
         
+        try {
+            FileReader lector = new FileReader(archivoTXT);
+            BufferedReader buferLector = new BufferedReader(lector);
+            String fila;
+            
+            while ((fila=buferLector.readLine())!=null) {                
+                System.out.println(" "+fila);
+            }
+            
+            
+        } catch (Exception e) {
+        }
     }
     
     
