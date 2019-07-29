@@ -1,7 +1,9 @@
 
 package practica1git.Backend;
 
-public class Estudiante {
+import java.io.Serializable;
+
+public class Estudiante implements Serializable {
     
     private int carnet;
     private String nombre;

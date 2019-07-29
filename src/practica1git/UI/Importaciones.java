@@ -8,9 +8,12 @@ package practica1git.UI;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import javax.swing.JFileChooser;
+import practica1git.Backend.Estudiante;
 import practica1git.Backend.Libro;
+import practica1git.Backend.Prestamo;
 
 /**
  *
@@ -22,6 +25,8 @@ public class Importaciones extends javax.swing.JDialog {
     int contadorLibro;
     int contadorEstudiante;
     int contadorPrestamo;
+    
+    
 
     /**
      * Creates new form Impotaciones
@@ -156,8 +161,17 @@ public class Importaciones extends javax.swing.JDialog {
                     
                 }else if(fila=="ESTUDIANTE"){
                     //guardarestudiante
+                    Estudiante estudiante = new Estudiante();
+                    estudiante.setCarnet(Integer.parseInt(buferLector.readLine()));
+                    estudiante.setNombre(buferLector.readLine());
+                    estudiante.setCodigoCarrera(Integer.parseInt(buferLector.readLine()));
+                    
                 }else if(fila=="PRESTAMO"){
                     //guardarprestamo
+                    Prestamo prestamo = new Prestamo();
+                    prestamo.setCodigoLibro(buferLector.readLine());
+                    prestamo.setCarnet(Integer.parseInt(buferLector.readLine()));
+                    prestamo.setFechaPrestamo(buferLector.readLine());
                 }else{
                     //guardarregistroignorado
                 }
@@ -170,6 +184,10 @@ public class Importaciones extends javax.swing.JDialog {
             
         } catch (Exception e) {
         }
+    }
+    
+    public void guardarEstudiante(){
+        
     }
     
     

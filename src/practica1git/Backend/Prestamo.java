@@ -7,7 +7,7 @@ public class Prestamo {
     
     private String codigoLibro;
     private int carnet;
-    private Date fechaPrestamo;
+    private String fechaPrestamo;
 
     public String getCodigoLibro() {
         return codigoLibro;
@@ -25,11 +25,11 @@ public class Prestamo {
         this.carnet = carnet;
     }
 
-    public Date getFechaPrestamo() {
+    public String getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(Date fechaPrestamo) {
+    public void setFechaPrestamo(String fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
     
