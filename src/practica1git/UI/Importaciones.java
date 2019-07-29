@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import practica1git.Archivos.Archivos;
 import practica1git.Backend.Estudiante;
 import practica1git.Backend.Libro;
 import practica1git.Backend.Prestamo;
@@ -25,7 +27,8 @@ public class Importaciones extends javax.swing.JDialog {
     int contadorLibro;
     int contadorEstudiante;
     int contadorPrestamo;
-    
+    Archivos archivos;
+    int registrosIgnorados;
     
 
     /**
@@ -36,6 +39,7 @@ public class Importaciones extends javax.swing.JDialog {
         initComponents();
         unDiseño();
         buscadorArchivo = new JFileChooser();
+        archivos = new Archivos();
     }
 
     /**
@@ -149,36 +153,43 @@ public class Importaciones extends javax.swing.JDialog {
             while ((fila=buferLector.readLine())!=null) {                
                 System.out.println(" "+fila);
                 
-                if(fila=="LIBRO"){
+                if(fila.contains("LIBRO")){
                     //guardarlibro  
+                    System.out.println("ES LIBRO");
                     Libro libro = new Libro();
-                    for (int i = 0; i < 4; i++) {
-                        libro.setTitulo(buferLector.readLine());
-                        libro.setAutor(buferLector.readLine());
-                        libro.setCodigo(buferLector.readLine());
-                        libro.setCantidad(Integer.parseInt(buferLector.readLine()));
-                    }
+                    libro.setTitulo(cortarTituloLibro(buferLector.readLine()));
+                    libro.setAutor(cortarAutorLibro(buferLector.readLine()));
+                    libro.setCodigo(cortarCodigoLibro(buferLector.readLine()));
+                    libro.setCantidad(cortarCantidadLibro(buferLector.readLine()));
+                    archivos.guardarLibro(libro);
                     
-                }else if(fila=="ESTUDIANTE"){
+                }else if(fila.contains("ESTUDIANTE")){
+                    System.out.println("ES ESTUDIANTE");
                     //guardarestudiante
                     Estudiante estudiante = new Estudiante();
-                    estudiante.setCarnet(Integer.parseInt(buferLector.readLine()));
-                    estudiante.setNombre(buferLector.readLine());
-                    estudiante.setCodigoCarrera(Integer.parseInt(buferLector.readLine()));
+                    estudiante.setCarnet(cortarCarnetEstudiante(buferLector.readLine()));
+                    estudiante.setNombre(cortarNombreEstudiante(buferLector.readLine()));
+                    estudiante.setCodigoCarrera(cortarCodigoCarrera(buferLector.readLine()));
+                    archivos.guardarEstudiante(estudiante);
                     
-                }else if(fila=="PRESTAMO"){
+                }else if(fila.contains("PRESTAMO")){
+                    System.out.println("ES PRESTAMO");
                     //guardarprestamo
                     Prestamo prestamo = new Prestamo();
-                    prestamo.setCodigoLibro(buferLector.readLine());
-                    prestamo.setCarnet(Integer.parseInt(buferLector.readLine()));
-                    prestamo.setFechaPrestamo(buferLector.readLine());
+                    prestamo.setCodigoLibro(cortarCodigoLibro(buferLector.readLine()));
+                    prestamo.setCarnet(cortarCarnetEstudiante(buferLector.readLine()));
+                    prestamo.setFechaPrestamo(cortarFechaPrestamo(buferLector.readLine()));
+                    archivos.GuardarPrestamo(prestamo);
+                    
                 }else{
                     //guardarregistroignorado
+                    registrosIgnorados++;
+                    
                 }
                 
             }
             
-            
+            JOptionPane.showMessageDialog(this, registrosIgnorados );
 
                 
             
@@ -186,9 +197,52 @@ public class Importaciones extends javax.swing.JDialog {
         }
     }
     
-    public void guardarEstudiante(){
-        
+    
+    public String cortarTituloLibro(String titulo){
+        String nuevaString=titulo.substring(7, titulo.length()-1);
+        return nuevaString;
     }
+    
+    public String cortarAutorLibro(String autor){
+        String nuevaString=autor.substring(7, autor.length()-1);
+        return nuevaString;
+    }
+    
+    public String cortarCodigoLibro(String codigo){
+        String nuevaString=codigo.substring(8, codigo.length()-1);
+        return nuevaString;
+    }
+    
+    public String cortarCodigoLibro2(String codigo){
+        String nuevaString=codigo.substring(12, codigo.length()-1);
+        return nuevaString;
+    }
+    
+    public int cortarCantidadLibro(String cantidad){
+        int nuevacantidad=Integer.parseInt(cantidad.substring(9));
+        return nuevacantidad;
+    }
+    
+    public int cortarCarnetEstudiante(String carnet){
+        int nuevacantidad=Integer.parseInt(carnet.substring(7,carnet.length()-1));
+        return nuevacantidad;
+    }
+    
+    public String cortarNombreEstudiante(String nombre){
+        String nuevaString=nombre.substring(7, nombre.length()-1);
+        return nuevaString;
+    }
+    
+    public int cortarCodigoCarrera(String carrera){
+        int nuevacantidad=Integer.parseInt(carrera.substring(8));
+        return nuevacantidad;
+    }
+    
+    public String cortarFechaPrestamo(String fecha){
+        String nuevaString=fecha.substring(7, fecha.length()-1);
+        return nuevaString;
+    }
+    
     
     
     

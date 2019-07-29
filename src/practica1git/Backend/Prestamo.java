@@ -1,9 +1,10 @@
 
 package practica1git.Backend;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Prestamo {
+public class Prestamo implements Serializable{
     
     private String codigoLibro;
     private int carnet;
