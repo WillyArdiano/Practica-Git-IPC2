@@ -1,9 +1,9 @@
 
 package practica1git.UI;
-import Practica1GIt.Backend.Libro;
 import javax.swing.JOptionPane;
 public class RegistrarLibro extends javax.swing.JDialog {
- 
+    
+    private int verificador =0;
     
     public RegistrarLibro(java.awt.Frame parent) {
         super(parent, true);
@@ -366,27 +366,149 @@ public class RegistrarLibro extends javax.swing.JDialog {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
       validarValores();
+        System.out.println(verificador);
+       if(verificador == 2 ){
+            this.setVisible(false);
+            System.out.println("cerrar" );
+        }
+       
     }//GEN-LAST:event_btnGuardarActionPerformed
     protected void validarValores(){
-        if(!txtMes.getText().isEmpty()|| !txtDia.getText().isEmpty()|| !txtAño.getText().isEmpty()){
-            validarFecha();
-        }
-        if (txtCdLetra.getText().length() > 3   ){
-            JOptionPane.showMessageDialog(null,"caracteres no validos");
-        }
-        if (Integer.parseInt(txtCdNumero.getText())*0 != 0 || txtCdNumero.getText().length() > 3 ){
-            JOptionPane.showMessageDialog(null,"codigoNumerico no valido");
-        }else if (txtNoCopias.getText()==null || Integer.parseInt(txtNoCopias.getText()) *0 != 0){
-            JOptionPane.showMessageDialog(null,"numeroDeCopias no valido");
-        }else if(txtCdLetra.getText()==null || txtCdNumero.getText() == null || txtAutorLibro.getText()==null){
-            JOptionPane.showMessageDialog(null,"favor rellene los campos obligatorios");
+        verificador =0;
+        if(verificador ==0){
+                validarCodigo();
+        } else if(verificador ==2){
+            validarTituloVacio();
+        }else if(verificador ==2){
+            validarAutorVacio();
+        }else if(verificador ==2){
+            validarCopias();
+        } else if(verificador == 2){
+            if(!txtAño.getText().isEmpty()){
+                validarFecha();
+            }
         }
     }
-    
+    public int dia;
+    public int mes;
+    public int año;
     private void validarFecha(){
-         
+        try{
+        	dia = Integer.parseInt(txtDia.getText());
+            if (dia > 31){
+                JOptionPane.showMessageDialog(null,"Dia no valido");
+                 verificador =1;
+            } else if (dia < 31){
+                verificador =2;
+            }
+    	}catch(NumberFormatException ex){
+        	JOptionPane.showMessageDialog(null,"No es un  numero");
+                 verificador =1;
+    	}
+        try{
+            if(mes > 12){
+                mes = Integer.parseInt(txtMes.getText());
+                JOptionPane.showMessageDialog(null,"Mes no valido");
+                 verificador =1;
+            }else if(mes < 12){
+                verificador =2;
+            }
+    	}catch(NumberFormatException ex){
+        	JOptionPane.showMessageDialog(null,"No es un  numero");
+                verificador =1;
+    	}
+        
+        try{
+            año = Integer.parseInt(txtAño.getText());
+            if(txtAño.getText().length() != 4  ){
+                JOptionPane.showMessageDialog(null,"Año no valido");
+            }else if(txtAño.getText().length() == 4  ){
+                verificador =2;
+            }
+    	}catch(NumberFormatException ex){
+        	JOptionPane.showMessageDialog(null,"No es un  numero");
+                verificador =1;
+    	} 
     }
     
+    public int codigo;
+    public int codigoLetra;
+    
+    private void validarCodigo(){
+        if(txtCdNumero.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"codigo Obligatorio");
+            verificador =1;
+        }else if(!txtCdNumero.getText().isEmpty()){
+            verificador =2;
+        }
+        if(txtCdLetra.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"codigo Obligatorio");
+            verificador =1;
+        }else  if(txtCdLetra.getText().isEmpty()){
+            verificador =2;
+        }
+        
+        
+        try{
+            codigo = Integer.parseInt(txtCdNumero.getText());
+            if(txtCdNumero.getText().length() != 3  ){
+                JOptionPane.showMessageDialog(null,"codigo numerico no valido");
+                verificador =1;
+            }else  if(txtCdNumero.getText().length() != 3  ){
+                verificador =2;
+            }
+    	}catch(NumberFormatException ex){
+        	JOptionPane.showMessageDialog(null,"Codigo No es un  numero");
+                verificador =1;
+    	}
+        
+        try{
+            codigoLetra = Integer.parseInt(txtCdLetra.getText());
+            JOptionPane.showMessageDialog(null,"codigo alfavetico no es letra");
+             verificador =1;
+    	}catch(NumberFormatException ex){
+            if(txtCdLetra.getText().length() != 3  ){
+                JOptionPane.showMessageDialog(null,"codigo alfavetico de 3 caracteres");
+                 verificador =1;
+            }else{
+                 verificador =2;
+            }
+    	}
+        
+    }
+    public int noCopias;
+    
+    private void validarCopias(){
+        if(txtNoCopias.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Numero de Copias Obligatorio");
+            verificador =1;
+        }else  if(!txtNoCopias.getText().isEmpty()){
+             verificador =2;
+        }
+        try{
+            noCopias = Integer.parseInt(txtNoCopias.getText()); 
+    	}catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(null,"No Copias no es numero");
+             verificador =1; 
+    	}
+    }
+    private void validarTituloVacio(){
+        if(txtTituloLibro.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"titulo del Libro Obligatorio");
+            verificador =1;
+        }else if(!txtTituloLibro.getText().isEmpty()){
+            verificador = 2;
+        }
+    }
+    
+    private void validarAutorVacio(){
+        if(txtAutorLibro.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"NOombre del Autor Obligatorio");
+            verificador =1;
+        }else if(!txtAutorLibro.getText().isEmpty()){
+            verificador = 2;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
