@@ -1,7 +1,10 @@
 
 package practica1git.UI;
 
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import practica1git.Backend.Estudiante;
+import practica1git.Backend.Prestamo;
 
 /**
  *
@@ -9,7 +12,10 @@ import javax.swing.JOptionPane;
  */
 public class RegistrarDevolucion extends javax.swing.JDialog {
 
+    Prestamo prestamo;
     private int verificador;
+    private LocalDate fechaActual;
+    private Estudiante estudiante;
     public RegistrarDevolucion(java.awt.Frame parent) {
         super(parent, true);
         initComponents();
@@ -238,17 +244,18 @@ public class RegistrarDevolucion extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAgregarOtroLibroActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        validarCarnet();
         
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnCalcularSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularSaldoActionPerformed
-       
+        validarDatos();
     }//GEN-LAST:event_btnCalcularSaldoActionPerformed
 
     
     
     private void validarDatos(){
-        
+        prestamo = new Prestamo();
         verificador =0;
         
         if(verificador ==0){
@@ -259,7 +266,7 @@ public class RegistrarDevolucion extends javax.swing.JDialog {
                     camposVacios();
                     if(verificador ==2){
                         vaciarCampos();
-                        this.setVisible(false);
+                        estudiante.calcularSaldo(estudiante, fechaActual);
                     }
                 }
             }    
@@ -329,6 +336,7 @@ public class RegistrarDevolucion extends javax.swing.JDialog {
                  verificador =1;
             } else if (txtNoCarnet.getText().length()==9){
                 verificador =2;
+                
             }
     	}catch(NumberFormatException ex){
         	JOptionPane.showMessageDialog(null,"Carnet invalido");
