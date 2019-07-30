@@ -156,30 +156,42 @@ public class Importaciones extends javax.swing.JDialog {
                 if(fila.contains("LIBRO")){
                     //guardarlibro  
                     System.out.println("ES LIBRO");
-                    Libro libro = new Libro();
-                    libro.setTitulo(cortarTituloLibro(buferLector.readLine()));
-                    libro.setAutor(cortarAutorLibro(buferLector.readLine()));
-                    libro.setCodigo(cortarCodigoLibro(buferLector.readLine()));
-                    libro.setCantidad(cortarCantidadLibro(buferLector.readLine()));
-                    archivos.guardarLibro(libro);
+                    try {
+                        Libro libro = new Libro();
+                        libro.setTitulo(cortarTituloLibro(buferLector.readLine()));
+                        libro.setAutor(cortarAutorLibro(buferLector.readLine()));
+                        libro.setCodigo(cortarCodigoLibro(buferLector.readLine()));
+                        libro.setCantidad(cortarCantidadLibro(buferLector.readLine()));
+                        archivos.guardarLibro(libro);
+                    } catch (Exception e) {
+                        registrosIgnorados++;
+                    }
                     
                 }else if(fila.contains("ESTUDIANTE")){
                     System.out.println("ES ESTUDIANTE");
                     //guardarestudiante
-                    Estudiante estudiante = new Estudiante();
-                    estudiante.setCarnet(cortarCarnetEstudiante(buferLector.readLine()));
-                    estudiante.setNombre(cortarNombreEstudiante(buferLector.readLine()));
-                    estudiante.setCodigoCarrera(cortarCodigoCarrera(buferLector.readLine()));
-                    archivos.guardarEstudiante(estudiante);
+                    try {
+                        Estudiante estudiante = new Estudiante();
+                        estudiante.setCarnet(cortarCarnetEstudiante(buferLector.readLine()));
+                        estudiante.setNombre(cortarNombreEstudiante(buferLector.readLine()));
+                        estudiante.setCodigoCarrera(cortarCodigoCarrera(buferLector.readLine()));
+                        archivos.guardarEstudiante(estudiante);
+                    } catch (Exception e) {
+                        registrosIgnorados++;
+                    }
                     
                 }else if(fila.contains("PRESTAMO")){
                     System.out.println("ES PRESTAMO");
                     //guardarprestamo
-                    Prestamo prestamo = new Prestamo();
-                    prestamo.setCodigoLibro(cortarCodigoLibro(buferLector.readLine()));
-                    prestamo.setCarnet(cortarCarnetEstudiante(buferLector.readLine()));
-                    prestamo.setFechaPrestamo(cortarFechaPrestamo(buferLector.readLine()));
-                    archivos.GuardarPrestamo(prestamo);
+                    try {
+                        Prestamo prestamo = new Prestamo();
+                        prestamo.setCodigoLibro(cortarCodigoLibro(buferLector.readLine()));
+                        prestamo.setCarnet(cortarCarnetEstudiante(buferLector.readLine()));
+                        prestamo.setFechaPrestamo(cortarFechaPrestamo(buferLector.readLine()));
+                        archivos.GuardarPrestamo(prestamo);
+                    } catch (Exception e) {
+                        registrosIgnorados++;
+                    }
                     
                 }else{
                     //guardarregistroignorado
