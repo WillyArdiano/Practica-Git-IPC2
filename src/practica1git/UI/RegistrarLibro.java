@@ -1,9 +1,14 @@
 
 package practica1git.UI;
+import java.time.LocalDate;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import practica1git.Backend.Libro;
 public class RegistrarLibro extends javax.swing.JDialog {
     
     private int verificador =0;
+    private String codigo;
+    private Libro libro;
     
     public RegistrarLibro(java.awt.Frame parent) {
         super(parent, true);
@@ -382,17 +387,24 @@ public class RegistrarLibro extends javax.swing.JDialog {
         
        
     }//GEN-LAST:event_btnGuardarActionPerformed
+    
     protected void validarValores(){
+        libro = new Libro();
         verificador =0;
         if(verificador ==0){
                 validarCodigo();
                 if(verificador ==2){
+                    codigo = codigoNumero + "-" + codigoLetra;
+                    libro.setCodigo(codigo);
                     validarTituloVacio();
                     if(verificador ==2){
+                        libro.setTitulo(txtTituloLibro.getText());
                         validarAutorVacio();
                         if(verificador ==2){
+                            libro.setAutor(txtAutorLibro.getText());
                             validarCopias();
                             if(verificador == 2){
+                                libro.setCantidad(noCopias);
                                 if(!txtAño.getText().isEmpty()){
                                     validarFecha();
                                 }
