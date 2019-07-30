@@ -15,6 +15,9 @@ import javax.swing.JLabel;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     RegistrarLibro registrarLibro = new RegistrarLibro(this);
+    RegistrarEstudiante registrarEstudiante = new RegistrarEstudiante(this);
+    RegistroPrestamo registroPrestamo = new RegistroPrestamo(this);
+    RegistrarDevolucion regisrarDevolucion = new RegistrarDevolucion(this);
     public VentanaPrincipal() {
         initComponents();
         Diseño();
@@ -43,8 +46,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         btnregistrarLibroArchivo = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnPrestamo = new javax.swing.JButton();
+        btnDevolucion = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -64,6 +67,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3.setText("Importar Nuevos Libros(archivo)");
 
         btnRegistrarEstudiante.setText("IR");
+        btnRegistrarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarEstudianteActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel4.setText("Ingresar Nuevo Libro");
@@ -96,18 +104,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel8.setText("REGISTRAR");
 
         btnregistrarLibroArchivo.setText("IR");
-
-        jButton4.setText("PRESTAMO");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnregistrarLibroArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnregistrarLibroArchivoActionPerformed(evt);
             }
         });
 
-        jButton5.setText("DEVOLUCION");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnPrestamo.setText("PRESTAMO");
+        btnPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnPrestamoActionPerformed(evt);
+            }
+        });
+
+        btnDevolucion.setText("DEVOLUCION");
+        btnDevolucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolucionActionPerformed(evt);
             }
         });
 
@@ -151,8 +164,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(fondoTituloLayout.createSequentialGroup()
                         .addGap(208, 208, 208)
                         .addGroup(fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(fondoTituloLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jLabel8)))
@@ -210,9 +223,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8)
                 .addGap(43, 43, 43)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -248,16 +261,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestamoActionPerformed
+        registroPrestamo.setVisible(true);
+    }//GEN-LAST:event_btnPrestamoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void btnDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionActionPerformed
+        regisrarDevolucion.setVisible(true);
+    }//GEN-LAST:event_btnDevolucionActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void btnRegistrarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarLibroActionPerformed
@@ -267,6 +280,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btnRegistrarLibroMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarLibroMouseReleased
         registrarLibro.setVisible(true);
     }//GEN-LAST:event_btnRegistrarLibroMouseReleased
+
+    private void btnRegistrarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEstudianteActionPerformed
+        registrarEstudiante.setVisible(true);
+    }//GEN-LAST:event_btnRegistrarEstudianteActionPerformed
+
+    private void btnregistrarLibroArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarLibroArchivoActionPerformed
+        
+    }//GEN-LAST:event_btnregistrarLibroArchivoActionPerformed
   
 
     protected void Diseño(){
@@ -278,12 +299,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDevolucion;
+    private javax.swing.JButton btnPrestamo;
     private javax.swing.JButton btnRegistrarEstudiante;
     private javax.swing.JButton btnRegistrarLibro;
     private javax.swing.JButton btnregistrarLibroArchivo;
     private javax.swing.JPanel fondoTitulo;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;

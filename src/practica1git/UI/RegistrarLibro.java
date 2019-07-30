@@ -8,7 +8,20 @@ public class RegistrarLibro extends javax.swing.JDialog {
     public RegistrarLibro(java.awt.Frame parent) {
         super(parent, true);
         initComponents();
+        
         setLocationRelativeTo(null);
+    }
+    
+    private void vaciarCampos(){
+        txtAutorLibro.setText("");
+        txtTituloLibro.setText("");
+        txtNombreEditorial.setText("");
+        txtNoCopias.setText("");
+        txtCdLetra.setText("");
+        txtCdNumero.setText("");
+        txtDia.setText("");
+        txtMes.setText("");
+        txtAño.setText("");
     }
 
     @SuppressWarnings("unchecked")
@@ -365,29 +378,33 @@ public class RegistrarLibro extends javax.swing.JDialog {
     }//GEN-LAST:event_txtNombreEditorialActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-      validarValores();
-        System.out.println(verificador);
-       if(verificador == 2 ){
-            this.setVisible(false);
-            System.out.println("cerrar" );
-        }
+        validarValores();
+        
        
     }//GEN-LAST:event_btnGuardarActionPerformed
     protected void validarValores(){
         verificador =0;
         if(verificador ==0){
                 validarCodigo();
-        } else if(verificador ==2){
-            validarTituloVacio();
-        }else if(verificador ==2){
-            validarAutorVacio();
-        }else if(verificador ==2){
-            validarCopias();
-        } else if(verificador == 2){
-            if(!txtAño.getText().isEmpty()){
-                validarFecha();
-            }
-        }
+                if(verificador ==2){
+                    validarTituloVacio();
+                    if(verificador ==2){
+                        validarAutorVacio();
+                        if(verificador ==2){
+                            validarCopias();
+                            if(verificador == 2){
+                                if(!txtAño.getText().isEmpty()){
+                                    validarFecha();
+                                }
+                                if(verificador == 2 ){
+                                    this.setVisible(false);
+                                    vaciarCampos();
+                                }
+                            }
+                        }
+                    }
+                }
+        }      
     }
     public int dia;
     public int mes;
@@ -431,7 +448,7 @@ public class RegistrarLibro extends javax.swing.JDialog {
     	} 
     }
     
-    public int codigo;
+    public int codigoNumero;
     public int codigoLetra;
     
     private void validarCodigo(){
@@ -444,13 +461,13 @@ public class RegistrarLibro extends javax.swing.JDialog {
         if(txtCdLetra.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"codigo Obligatorio");
             verificador =1;
-        }else  if(txtCdLetra.getText().isEmpty()){
+        }else  if(!txtCdLetra.getText().isEmpty()){
             verificador =2;
         }
         
         
         try{
-            codigo = Integer.parseInt(txtCdNumero.getText());
+            codigoNumero = Integer.parseInt(txtCdNumero.getText());
             if(txtCdNumero.getText().length() != 3  ){
                 JOptionPane.showMessageDialog(null,"codigo numerico no valido");
                 verificador =1;
@@ -473,8 +490,7 @@ public class RegistrarLibro extends javax.swing.JDialog {
             }else{
                  verificador =2;
             }
-    	}
-        
+    	} 
     }
     public int noCopias;
     
@@ -496,7 +512,8 @@ public class RegistrarLibro extends javax.swing.JDialog {
         if(txtTituloLibro.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"titulo del Libro Obligatorio");
             verificador =1;
-        }else if(!txtTituloLibro.getText().isEmpty()){
+            System.out.println(verificador);
+        }else if(txtTituloLibro.getText().isEmpty()== false){
             verificador = 2;
         }
     }

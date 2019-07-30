@@ -33,7 +33,7 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
         PanelFondo = new javax.swing.JPanel();
         tituloLbl = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtNombreEstuduante = new javax.swing.JTextField();
+        txtNombreEstudiante = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtCarnet = new javax.swing.JTextField();
@@ -45,6 +45,9 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
+        txtCodCarrera = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        nombreCarreratxt = new javax.swing.JLabel();
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel5.setText("Ingrese Autor del Libro:");
@@ -57,13 +60,13 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
         tituloLbl.setText("REGISTRAR NUEVO ESTUDUANTE");
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel6.setText("INGRESE NOMBRE DEL ESTUDUANTE:");
+        jLabel6.setText("INGRESE NOMBRE DEL ESTUDIANTE:");
 
-        txtNombreEstuduante.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        txtNombreEstuduante.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNombreEstuduante.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreEstudiante.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtNombreEstudiante.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNombreEstudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreEstuduanteActionPerformed(evt);
+                txtNombreEstudianteActionPerformed(evt);
             }
         });
 
@@ -76,7 +79,7 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
         });
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel7.setText("INGRESE APELLIDO DEL ESTUDUANTE:");
+        jLabel7.setText("INGRESE APELLIDO DEL ESTUDIANTE:");
 
         txtCarnet.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtCarnet.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -130,6 +133,25 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
             }
         });
 
+        txtCodCarrera.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtCodCarrera.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCodCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodCarreraActionPerformed(evt);
+            }
+        });
+        txtCodCarrera.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCodCarreraKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCodCarreraKeyReleased(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel9.setText("INGRESE CODIGO DE CARRERA:");
+
         javax.swing.GroupLayout PanelFondoLayout = new javax.swing.GroupLayout(PanelFondo);
         PanelFondo.setLayout(PanelFondoLayout);
         PanelFondoLayout.setHorizontalGroup(
@@ -137,44 +159,49 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
             .addGroup(PanelFondoLayout.createSequentialGroup()
                 .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelFondoLayout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelFondoLayout.createSequentialGroup()
+                                .addComponent(txtAño, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1))
+                            .addGroup(PanelFondoLayout.createSequentialGroup()
+                                .addGap(106, 106, 106)
+                                .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelFondoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4))
+                    .addGroup(PanelFondoLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(tituloLbl))
                     .addGroup(PanelFondoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
-                        .addComponent(txtNombreEstuduante, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelFondoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel4))
-                    .addGroup(PanelFondoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                            .addComponent(txtCarnet)
                             .addGroup(PanelFondoLayout.createSequentialGroup()
-                                .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                                    .addComponent(txtCarnet))))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                                .addComponent(txtCodCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(nombreCarreratxt, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelFondoLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelFondoLayout.createSequentialGroup()
-                        .addComponent(txtAño, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
-                    .addGroup(PanelFondoLayout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71))
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
         PanelFondoLayout.setVerticalGroup(
             PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +211,7 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
                 .addGap(38, 38, 38)
                 .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtNombreEstuduante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -193,20 +220,26 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
                 .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(38, 38, 38)
+                .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtCodCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombreCarreratxt, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtAño, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtMes, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(36, 36, 36)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                    .addGroup(PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtMes, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAño, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,9 +256,9 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreEstuduanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEstuduanteActionPerformed
+    private void txtNombreEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEstudianteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreEstuduanteActionPerformed
+    }//GEN-LAST:event_txtNombreEstudianteActionPerformed
 
     private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
         // TODO add your handling code here:
@@ -248,23 +281,148 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
     }//GEN-LAST:event_txtDiaActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
+        validar();
+       
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void txtCodCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodCarreraActionPerformed
+        reconocerCarrera();
+    }//GEN-LAST:event_txtCodCarreraActionPerformed
+
+    public int codIngerieria =1;
+    public int codMedicina =2;
+    public int codDerecho =3;
+    public int codArquitectura =4;
+    public int codAdministracion =5;
+    private void txtCodCarreraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodCarreraKeyPressed
+
+    }//GEN-LAST:event_txtCodCarreraKeyPressed
+
+    private void txtCodCarreraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodCarreraKeyReleased
+        reconocerCarrera();
+    }//GEN-LAST:event_txtCodCarreraKeyReleased
+
     private void validar(){
-        
+        verificador =0;
+        if(verificador==0){
+            validarCarnet();
+            if(verificador ==2){
+                validarCamposVacios();
+                System.out.println("camposVacios");
+                if(verificador ==2){
+                    System.out.println("carrera");
+                    reconocerCarrera();
+                    validarCodCarrera();
+                    if(verificador==2){
+                        if(!txtAño.getText().isEmpty()){
+                            validarFechaNacimiento();
+                        }
+                        if(verificador==2){
+                            this.setVisible(false);
+                            vaciarCampos();
+                        }
+                    }
+                }
+            }
+        } 
+    }
+    protected int codCarrera;
+    public void validarCodCarrera(){
+        try{
+        	codCarrera = Integer.parseInt(txtCodCarrera.getText());
+            if (codCarrera > 5){
+                JOptionPane.showMessageDialog(null,"carrera no existe");
+                 verificador =1;
+            } else if (codCarrera < 5 && !txtCodCarrera.getText().isEmpty()){
+                verificador =2;
+            }
+    	}catch(NumberFormatException ex){
+        	JOptionPane.showMessageDialog(null,"Carnet invalido");
+                 verificador =1;
+        }
     }
     
-       public int dia;
+    public void vaciarCampos(){
+        txtCodCarrera.setText("");
+        txtDia.setText("");
+        txtMes.setText("");
+        txtAño.setText("");
+        txtCarnet.setText("");
+        txtApellido.setText("");
+        txtNombreEstudiante.setText("");
+    }
+    
+    public void validarCamposVacios(){
+        if(txtNombreEstudiante.getText().isEmpty()){
+            verificador =1;
+            JOptionPane.showMessageDialog(null,"Nombre requerido");
+            System.out.println("vacio");
+        }else if(!txtNombreEstudiante.getText().isEmpty()){
+            verificador =2;
+        }
+        
+        if(txtApellido.getText().isEmpty()){
+            verificador =1;
+            JOptionPane.showMessageDialog(null,"Apellido requerido");
+            System.out.println("vacio");
+        }else if(txtApellido.getText().isEmpty()==false){
+            verificador = 2;
+        }
+    }
+    
+    public void reconocerCarrera(){
+        try{
+            if(txtCodCarrera.getText().isEmpty()){
+                nombreCarreratxt.setText("");
+            }
+            if(Integer.parseInt(txtCodCarrera.getText())==1){
+               nombreCarreratxt.setText("Ingenieria");
+           }else if(Integer.parseInt(txtCodCarrera.getText()) == 2){
+               nombreCarreratxt.setText("Medicina");
+           }else if(Integer.parseInt(txtCodCarrera.getText()) == 3){
+               nombreCarreratxt.setText("Derecho");
+           }else if(Integer.parseInt(txtCodCarrera.getText()) == 4){
+               nombreCarreratxt.setText("Arquitectura");
+           }else if(Integer.parseInt(txtCodCarrera.getText()) == 5){
+               nombreCarreratxt.setText("Administracion");
+           }else{
+               nombreCarreratxt.setText("");
+           }
+    	}catch(NumberFormatException ex){
+             if(!txtCodCarrera.getText().isEmpty()){
+                nombreCarreratxt.setText("carrera no existente");
+            }
+        	
+        }
+       
+    }
+    
+    public int carnet;
+    private void validarCarnet(){
+        try{
+        	carnet = Integer.parseInt(txtCarnet.getText());
+            if (txtCarnet.getText().length() !=9){
+                JOptionPane.showMessageDialog(null,"carnet requiere 9 digitos");
+                 verificador =1;
+            } else if (txtCarnet.getText().length()==9){
+                verificador =2;
+            }
+    	}catch(NumberFormatException ex){
+        	JOptionPane.showMessageDialog(null,"Carnet invalido");
+                 verificador =1;
+        }
+    }
+    
+    public int dia;
     public int mes;
     public int año;
-    private void validarFecha(){
+    private void validarFechaNacimiento(){
         try{
         	dia = Integer.parseInt(txtDia.getText());
             if (dia > 31){
-                JOptionPane.showMessageDialog(null,"Dia no valido");
+                JOptionPane.showMessageDialog(null,"Dia no valido o Campo sin llenar");
                  verificador =1;
-            } else if (dia < 31){
+            } else if (dia < 31 && !txtCodCarrera.getText().isEmpty()){
                 verificador =2;
             }
     	}catch(NumberFormatException ex){
@@ -274,9 +432,9 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
         try{
             if(mes > 12){
                 mes = Integer.parseInt(txtMes.getText());
-                JOptionPane.showMessageDialog(null,"Mes no valido");
+                JOptionPane.showMessageDialog(null,"Mes no valido o campo sin llenar");
                  verificador =1;
-            }else if(mes < 12){
+            }else if(mes < 12 && !txtCodCarrera.getText().isEmpty()){
                 verificador =2;
             }
     	}catch(NumberFormatException ex){
@@ -287,8 +445,8 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
         try{
             año = Integer.parseInt(txtAño.getText());
             if(txtAño.getText().length() != 4  ){
-                JOptionPane.showMessageDialog(null,"Año no valido");
-            }else if(txtAño.getText().length() == 4  ){
+                JOptionPane.showMessageDialog(null,"Año no valido o campo sin llenar");
+            }else if(txtAño.getText().length() == 4 && !txtCodCarrera.getText().isEmpty() ){
                 verificador =2;
             }
     	}catch(NumberFormatException ex){
@@ -306,12 +464,15 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel nombreCarreratxt;
     private javax.swing.JLabel tituloLbl;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtAño;
     private javax.swing.JTextField txtCarnet;
+    private javax.swing.JTextField txtCodCarrera;
     private javax.swing.JTextField txtDia;
     private javax.swing.JTextField txtMes;
-    private javax.swing.JTextField txtNombreEstuduante;
+    private javax.swing.JTextField txtNombreEstudiante;
     // End of variables declaration//GEN-END:variables
 }
