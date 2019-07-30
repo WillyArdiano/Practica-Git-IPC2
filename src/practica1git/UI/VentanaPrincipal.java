@@ -287,6 +287,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     
+    
     private Importaciones importaciones;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
