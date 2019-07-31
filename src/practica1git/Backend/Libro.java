@@ -2,7 +2,6 @@
 package practica1git.Backend;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -46,12 +45,13 @@ public class Libro implements Serializable{
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-
+    
     public String getFechaPublicacion() {
         return fechaPublicacion;
     }
 
     public void setFechaPublicacion(String fechaPublicacion) {
+
         this.fechaPublicacion = fechaPublicacion;
     }
 

@@ -8,6 +8,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
+
 public class Prestamo implements Serializable{
     
     private String codigoLibro;
@@ -52,6 +53,5 @@ public class Prestamo implements Serializable{
     public void setFechaPrestamo(String fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
-    
    
 }
