@@ -11,7 +11,7 @@ public class Libro implements Serializable{
     private String autor;
     private String codigo;
     private int cantidad;
-    private String fechaPublicacion;
+    private Date fechaPublicacion;
     private String editorial;
 
     public String getTitulo() {
@@ -45,13 +45,12 @@ public class Libro implements Serializable{
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-    
-    public String getFechaPublicacion() {
+
+    public Date getFechaPublicacion() {
         return fechaPublicacion;
     }
 
-    public void setFechaPublicacion(String fechaPublicacion) {
-
+    public void setFechaPublicacion(Date fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
     }
 

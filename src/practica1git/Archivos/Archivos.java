@@ -14,16 +14,11 @@ import practica1git.Backend.Libro;
 import practica1git.Backend.Prestamo;
 
 public class Archivos {
-
-    public Archivos() {
-        
-    }
     
     
     //metodos para los estudiantes en archivos
     
     public void guardarEstudiante(Estudiante estudiante){ 
-
        
         
         try {
