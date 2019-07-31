@@ -278,10 +278,10 @@ public class RegistrarDevolucion extends javax.swing.JDialog {
                     libro.setCodigo(codigo);
                     camposVacios();
                     if(verificador ==2){
-                        if(buscar.buscarEstudiante(estudiantes, estudiante, nombreEstudiante) ==1){
+                        if(buscar.buscarEstudiante(estudiantes, estudiante, nombreEstudiante) != null){
                             if(buscar.buscarLibroEstudiante(estudiante, libro)==  1){
-                                estudiante.quitarLibroEstudiante(libro);
-                                estudiante.calcularSaldo(estudiante, fechaActual);
+                                buscar.buscarEstudiante(estudiantes, estudiante, nombreEstudiante).quitarLibroEstudiante(libro);
+                                estudiante.calcularSaldo(buscar.buscarEstudiante(estudiantes, estudiante, nombreEstudiante), fechaActual);
                                 vaciarCampos();
                             }
                         }
@@ -352,7 +352,6 @@ public class RegistrarDevolucion extends javax.swing.JDialog {
                  verificador =1;
             } else if (txtNoCarnet.getText().length()==9){
                 verificador =2;
-                
             }
     	}catch(NumberFormatException ex){
         	JOptionPane.showMessageDialog(null,"Carnet invalido");
