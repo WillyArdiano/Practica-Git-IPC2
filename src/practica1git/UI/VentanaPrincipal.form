@@ -89,7 +89,7 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jButton6" min="-2" pref="188" max="-2" attributes="0"/>
+                          <Component id="btnMostrarRegistro" min="-2" pref="188" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -101,7 +101,7 @@
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" min="-2" pref="303" max="-2" attributes="0"/>
+                          <Component id="cmbRegistros" min="-2" pref="303" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="265" max="32767" attributes="0"/>
@@ -137,11 +137,11 @@
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbRegistros" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jButton6" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="btnMostrarRegistro" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSeparator3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -308,13 +308,13 @@
             <Property name="text" type="java.lang.String" value="REGISTROS"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="cmbRegistros">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="6">
                 <StringItem index="0" value="Libros que deben ser entregados hoy"/>
                 <StringItem index="1" value="Libros en Mora"/>
-                <StringItem index="2" value="Ganancias "/>
+                <StringItem index="2" value="Ganancias"/>
                 <StringItem index="3" value="Prestamos por Estudiante"/>
                 <StringItem index="4" value="Prestamos por Carrera"/>
                 <StringItem index="5" value=" "/>
@@ -325,12 +325,12 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton6">
+        <Component class="javax.swing.JButton" name="btnMostrarRegistro">
           <Properties>
             <Property name="text" type="java.lang.String" value="ACEPTAR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMostrarRegistroActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

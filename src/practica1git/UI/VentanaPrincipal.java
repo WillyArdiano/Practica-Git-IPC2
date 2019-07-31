@@ -22,6 +22,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Diseño();
         importaciones = new Importaciones(this, true);
         
+        ganancias = new Ganancias(this, true);
+        librosAEntregarHoy = new LibrosAEntregarHoy(this, true);
+        librosEnMora = new LibrosEnMora(this, true);
+        prestamosPorCarrera = new PrestamosPorCarrera(this, true);
+        prestamosPorEstudiante = new PrestamosPorEstudiante(this, true);
+        
     }
 
     /**
@@ -51,8 +57,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton6 = new javax.swing.JButton();
+        cmbRegistros = new javax.swing.JComboBox<>();
+        btnMostrarRegistro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,12 +122,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("DejaVu Serif", 0, 18)); // NOI18N
         jLabel9.setText("REGISTROS");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libros que deben ser entregados hoy", "Libros en Mora", "Ganancias ", "Prestamos por Estudiante", "Prestamos por Carrera", " " }));
+        cmbRegistros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libros que deben ser entregados hoy", "Libros en Mora", "Ganancias", "Prestamos por Estudiante", "Prestamos por Carrera", " " }));
 
-        jButton6.setText("ACEPTAR");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnMostrarRegistro.setText("ACEPTAR");
+        btnMostrarRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnMostrarRegistroActionPerformed(evt);
             }
         });
 
@@ -163,7 +169,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoTituloLayout.createSequentialGroup()
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMostrarRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51))))
             .addGroup(fondoTituloLayout.createSequentialGroup()
                 .addGroup(fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +178,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addComponent(jLabel9)
                         .addGap(43, 43, 43)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmbRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 265, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoTituloLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -199,9 +205,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoTituloLayout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMostrarRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -255,9 +261,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnMostrarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarRegistroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+        
+        //evaluamos el tipo de reporte requerido
+        if(cmbRegistros.getSelectedItem()=="Ganancias"){
+            ganancias.setVisible(true);
+        }else if (cmbRegistros.getSelectedItem()=="Libros que deben ser entregados hoy"){
+            librosAEntregarHoy.setVisible(true);
+        }else if (cmbRegistros.getSelectedItem()=="Libros en Mora"){
+            librosEnMora.setVisible(true);
+        }else if (cmbRegistros.getSelectedItem()=="Prestamos por Carrera"){
+            prestamosPorCarrera.setVisible(true);
+        }else if (cmbRegistros.getSelectedItem()=="Prestamos por Estudiante"){
+            prestamosPorEstudiante.setVisible(true);
+        }
+    }//GEN-LAST:event_btnMostrarRegistroActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -278,18 +297,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     
-    
+    //DECLARACION DE LOS DIALOGOS PARA EL FUNCIONAMIENTO
     private Importaciones importaciones;
+    private Ganancias ganancias;
+    private LibrosAEntregarHoy librosAEntregarHoy;
+    private LibrosEnMora librosEnMora;
+    private PrestamosPorCarrera prestamosPorCarrera;
+    private PrestamosPorEstudiante prestamosPorEstudiante;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMostrarRegistro;
+    private javax.swing.JComboBox<String> cmbRegistros;
     private javax.swing.JPanel fondoTitulo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
