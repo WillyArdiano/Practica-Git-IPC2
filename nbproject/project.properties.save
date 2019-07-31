@@ -24,7 +24,11 @@ debug.test.classpath=\
 dist.archive.excludes=
 # This directory is removed when the project is cleaned:
 dist.dir=dist
+<<<<<<< HEAD
+dist.jar=${dist.dir}/Practica1GIt.jar
+=======
 dist.jar=${dist.dir}/Practica1Git.jar
+>>>>>>> Registros
 dist.javadoc.dir=${dist.dir}/javadoc
 excludes=
 includes=**
@@ -50,11 +54,18 @@ javadoc.noindex=false
 javadoc.nonavbar=false
 javadoc.notree=false
 javadoc.private=false
-javadoc.splitindex=true
-javadoc.use=true
+javadoc.splitindex=truejavadoc.use=true
 javadoc.version=false
 javadoc.windowtitle=
+<<<<<<< HEAD
+<<<<<<< HEAD
+main.class=practica1git.Practica1GIt
+=======
+main.class=Practica1GIt.Principal
+>>>>>>> Registros
+=======
 main.class=practica1git.Backend.Practica1GIt
+>>>>>>> 9eb55c5f92cb3227c1405dc8f72f706c234106f3
 manifest.file=manifest.mf
 meta.inf.dir=${src.dir}/META-INF
 mkdist.disabled=false

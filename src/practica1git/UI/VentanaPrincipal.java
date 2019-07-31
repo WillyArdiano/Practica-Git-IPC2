@@ -7,16 +7,19 @@ package practica1git.UI;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 
 /**
  *
  * @author astridmc
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
-    /**
-     * Creates new form VentanaPrincipal
-     */
+    RegistrarEstudiante registrarEstudiante = new RegistrarEstudiante(this);
+    RegistroPrestamo registroPrestamo = new RegistroPrestamo(this);
+    RegistrarDevolucion regisrarDevolucion = new RegistrarDevolucion(this);
+    RegistrarLibro registrarLibro = new RegistrarLibro(this);
+ 
     public VentanaPrincipal() {
         initComponents();
         Diseño();
@@ -27,7 +30,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         librosEnMora = new LibrosEnMora(this, true);
         prestamosPorCarrera = new PrestamosPorCarrera(this, true);
         prestamosPorEstudiante = new PrestamosPorEstudiante(this, true);
-        
     }
 
     /**
@@ -44,17 +46,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         logoLbl = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnRegistrarEstudiante = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnRegistrarLibro = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnregistrarLibroArchivo = new javax.swing.JButton();
+        btnPrestamo = new javax.swing.JButton();
+        btnDevolucion = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         cmbRegistros = new javax.swing.JComboBox<>();
@@ -73,12 +75,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel3.setText("Importar Nuevos Libros(archivo)");
 
-        jButton1.setText("IR");
+        btnRegistrarEstudiante.setText("IR");
+        btnRegistrarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarEstudianteActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel4.setText("Ingresar Nuevo Libro");
 
-        jButton2.setText("IR");
+        btnRegistrarLibro.setText("IR");
+        btnRegistrarLibro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnRegistrarLibroMouseReleased(evt);
+            }
+        });
+        btnRegistrarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarLibroActionPerformed(evt);
+            }
+        });
 
         jSeparator1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         jSeparator1.setPreferredSize(new java.awt.Dimension(100, 10));
@@ -95,24 +112,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("DejaVu Serif", 0, 18)); // NOI18N
         jLabel8.setText("REGISTRAR");
 
-        jButton3.setText("IR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnregistrarLibroArchivo.setText("IR");
+        btnregistrarLibroArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnregistrarLibroArchivoActionPerformed(evt);
             }
         });
 
-        jButton4.setText("PRESTAMO");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnPrestamo.setText("PRESTAMO");
+        btnPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnPrestamoActionPerformed(evt);
             }
         });
 
-        jButton5.setText("DEVOLUCION");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnDevolucion.setText("DEVOLUCION");
+        btnDevolucion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnDevolucionActionPerformed(evt);
             }
         });
 
@@ -122,7 +139,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("DejaVu Serif", 0, 18)); // NOI18N
         jLabel9.setText("REGISTROS");
 
-        cmbRegistros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libros que deben ser entregados hoy", "Libros en Mora", "Ganancias", "Prestamos por Estudiante", "Prestamos por Carrera", " " }));
+
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "reportes", "Libros que deben ser entregados hoy", "Libros en Mora", "Ganancias ", "Prestamos por Estudiante", "Prestamos por Carrera", " " }));
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
 
         btnMostrarRegistro.setText("ACEPTAR");
         btnMostrarRegistro.addActionListener(new java.awt.event.ActionListener() {
@@ -143,17 +164,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(fondoTituloLayout.createSequentialGroup()
                         .addGap(175, 175, 175)
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(logoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 17, Short.MAX_VALUE))
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(fondoTituloLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(fondoTituloLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel8)
+                .addGroup(fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoTituloLayout.createSequentialGroup()
+                        .addGap(208, 208, 208)
+                        .addGroup(fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(fondoTituloLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel8)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(fondoTituloLayout.createSequentialGroup()
+                .addGroup(fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addGroup(fondoTituloLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel9)
+                        .addGap(43, 43, 43)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoTituloLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,27 +202,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+
+                                .addComponent(btnRegistrarLibro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnregistrarLibroArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnRegistrarEstudiante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoTituloLayout.createSequentialGroup()
                         .addComponent(btnMostrarRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51))))
-            .addGroup(fondoTituloLayout.createSequentialGroup()
-                .addGroup(fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addGroup(fondoTituloLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel9)
-                        .addGap(43, 43, 43)
-                        .addComponent(cmbRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 265, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoTituloLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(245, 245, 245))
+
         );
         fondoTituloLayout.setVerticalGroup(
             fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,38 +236,35 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel8)
-                .addGap(36, 36, 36)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(43, 43, 43)
+                .addComponent(btnPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(btnDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRegistrarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnregistrarLibroArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoTituloLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)))
                 .addGap(18, 18, 18)
                 .addGroup(fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
-        );
+                    .addComponent(btnRegistrarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(fondoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(fondoTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,6 +273,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestamoActionPerformed
+        registroPrestamo.setVisible(true);
+    }//GEN-LAST:event_btnPrestamoActionPerformed
+
+    private void btnDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionActionPerformed
+        regisrarDevolucion.setVisible(true);
+    }//GEN-LAST:event_btnDevolucionActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+
+    }                                        
+
+    private void btnRegistrarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarLibroActionPerformed
+      
+    }//GEN-LAST:event_btnRegistrarLibroActionPerformed
+
+    private void btnRegistrarLibroMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarLibroMouseReleased
+        registrarLibro.setVisible(true);
+    }//GEN-LAST:event_btnRegistrarLibroMouseReleased
+
+    private void btnRegistrarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEstudianteActionPerformed
+        registrarEstudiante.setVisible(true);
+    }//GEN-LAST:event_btnRegistrarEstudianteActionPerformed
+
+    private void btnregistrarLibroArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarLibroArchivoActionPerformed
+        
+    }//GEN-LAST:event_btnregistrarLibroArchivoActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -282,6 +331,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         importaciones.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
   
 
     protected void Diseño(){
@@ -291,13 +341,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ImageIcon logotipo = new ImageIcon("logoUSAC.png");
         logoLbl.setIcon(new ImageIcon(logotipo.getImage().getScaledInstance(logoLbl.getWidth(),logoLbl.getHeight(), Image.SCALE_SMOOTH)));
     }
-    
-    
-    
-    
-    
-    
-    //DECLARACION DE LOS DIALOGOS PARA EL FUNCIONAMIENTO
+
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton btnDevolucion;
+    private javax.swing.JButton btnPrestamo;
+    private javax.swing.JButton btnRegistrarEstudiante;
+    private javax.swing.JButton btnRegistrarLibro;
+    private javax.swing.JButton btnregistrarLibroArchivo;
     private Importaciones importaciones;
     private Ganancias ganancias;
     private LibrosAEntregarHoy librosAEntregarHoy;
