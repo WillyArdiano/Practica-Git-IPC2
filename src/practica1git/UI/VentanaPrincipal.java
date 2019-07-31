@@ -18,6 +18,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     RegistrarEstudiante registrarEstudiante = new RegistrarEstudiante(this);
     RegistroPrestamo registroPrestamo = new RegistroPrestamo(this);
     RegistrarDevolucion regisrarDevolucion = new RegistrarDevolucion(this);
+    Importaciones importar = new Importaciones(this);
     public VentanaPrincipal() {
         initComponents();
         Diseño();
@@ -286,7 +287,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarEstudianteActionPerformed
 
     private void btnregistrarLibroArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarLibroArchivoActionPerformed
-        
+       importar.setVisible(true);
     }//GEN-LAST:event_btnregistrarLibroArchivoActionPerformed
   
 
