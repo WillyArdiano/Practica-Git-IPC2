@@ -3,8 +3,12 @@ package practica1git.UI;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import practica1git.Backend.Buscador;
+import practica1git.Backend.Estudiante;
+import practica1git.Backend.Libro;
 import practica1git.Backend.Prestamo;
 
 public class RegistroPrestamo extends javax.swing.JDialog {
@@ -16,6 +20,10 @@ public class RegistroPrestamo extends javax.swing.JDialog {
     private int verificador =0;
     protected LocalDateTime fecha;
     protected Prestamo nuevoPrestamo;
+    protected Buscador buscar= new Buscador();
+    protected Estudiante estudiante;
+    protected Libro libro;
+    protected ArrayList <Estudiante> estudiantes;
     
     public RegistroPrestamo(java.awt.Frame parent) {
         super(parent, true);
@@ -34,7 +42,7 @@ public class RegistroPrestamo extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         txtNoCarnet = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        nombreAlumnotxt = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtCdNumero = new javax.swing.JTextField();
@@ -72,8 +80,8 @@ public class RegistroPrestamo extends javax.swing.JDialog {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel6.setText("****************************");
+        nombreAlumnotxt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        nombreAlumnotxt.setText("****************************");
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel7.setText("INGRESE CODIGO DEL LIBRO  EJ: 123  -    ABC");
@@ -139,7 +147,7 @@ public class RegistroPrestamo extends javax.swing.JDialog {
                             .addComponent(jLabel7)
                             .addComponent(jLabel5)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nombreAlumnotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tituloLbl)
                                     .addComponent(jLabel4)))))
@@ -161,7 +169,7 @@ public class RegistroPrestamo extends javax.swing.JDialog {
                     .addComponent(txtNoCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(nombreAlumnotxt)
                     .addComponent(jLabel5))
                 .addGap(29, 29, 29)
                 .addComponent(jLabel7)
@@ -220,16 +228,25 @@ public class RegistroPrestamo extends javax.swing.JDialog {
    public void validarDatos(){
        verificador =0;
        nuevoPrestamo = new Prestamo();
+       estudiante=new Estudiante();
+       libro=new Libro();
        if(verificador==0){
            validarCarnet();
            if(verificador==2){
+               estudiante.setCarnet(carnet);
                validarCodigo();
                 if(verificador==2){
+                    libro.setCodigo(codigo);
                     camposVacios();
                     if(verificador ==2){
-                        JOptionPane.showMessageDialog(null,"El prestamo se ha realizado con exito");
-                        vaciarCampos();
-                        fecha = LocalDateTime.now();
+                        if(buscar.buscarEstudiante(estudiantes, estudiante, nombreAlumnotxt)==1){
+                            if(buscar.buscarLibroEstudiante(estudiante, libro)==1){
+                            JOptionPane.showMessageDialog(null,"El prestamo se ha realizado con exito");
+                            vaciarCampos();
+                            fecha = LocalDateTime.now();
+                            }
+                        }
+                        
                     }
                 }
            }
@@ -328,10 +345,10 @@ public class RegistroPrestamo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel nombreAlumnotxt;
     private javax.swing.JLabel tituloLbl;
     private javax.swing.JTextField txtCdLetra;
     private javax.swing.JTextField txtCdNumero;

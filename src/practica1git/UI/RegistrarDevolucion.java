@@ -2,8 +2,11 @@
 package practica1git.UI;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import practica1git.Backend.Buscador;
 import practica1git.Backend.Estudiante;
+import practica1git.Backend.Libro;
 import practica1git.Backend.Prestamo;
 
 /**
@@ -16,6 +19,11 @@ public class RegistrarDevolucion extends javax.swing.JDialog {
     private int verificador;
     private LocalDate fechaActual;
     private Estudiante estudiante;
+    private Libro libro;
+    public int codigoNumero;
+    public int codigoLetra;
+    public ArrayList <Estudiante> estudiantes ;
+    private Buscador buscar = new Buscador();
     public RegistrarDevolucion(java.awt.Frame parent) {
         super(parent, true);
         initComponents();
@@ -33,7 +41,7 @@ public class RegistrarDevolucion extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         tituloLbl = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        nombreEstudiante = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         lblCarnet = new javax.swing.JLabel();
@@ -54,8 +62,8 @@ public class RegistrarDevolucion extends javax.swing.JDialog {
         tituloLbl.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
         tituloLbl.setText("REGISTRAR DEVOLUCION");
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel6.setText("****************************");
+        nombreEstudiante.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        nombreEstudiante.setText("****************************");
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel7.setText("INGRESE CODIGO DEL LIBRO  EJ: 123  -    ABC");
@@ -130,7 +138,7 @@ public class RegistrarDevolucion extends javax.swing.JDialog {
                         .addGap(22, 22, 22)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(nombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -166,13 +174,15 @@ public class RegistrarDevolucion extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(36, 36, 36)
-                    .addComponent(lblCarnet))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addGap(81, 81, 81)
-                    .addComponent(txtNoCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(37, 37, 37)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(36, 36, 36)
+                            .addComponent(lblCarnet))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(81, 81, 81)
+                            .addComponent(txtNoCarnet, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(37, 37, 37)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(76, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
@@ -182,7 +192,7 @@ public class RegistrarDevolucion extends javax.swing.JDialog {
                 .addComponent(tituloLbl)
                 .addGap(148, 148, 148)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(nombreEstudiante)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
@@ -253,20 +263,28 @@ public class RegistrarDevolucion extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCalcularSaldoActionPerformed
 
     
-    
+    private String codigo= codigoLetra + "-"+ codigoNumero;
     private void validarDatos(){
         prestamo = new Prestamo();
+        libro = new Libro();
         verificador =0;
         
         if(verificador ==0){
             validarCarnet();
             if(verificador == 2){
+                estudiante.setCarnet(carnet);
                 validarCodigo();
                 if (verificador ==2){
+                    libro.setCodigo(codigo);
                     camposVacios();
                     if(verificador ==2){
-                        vaciarCampos();
-                        estudiante.calcularSaldo(estudiante, fechaActual);
+                        if(buscar.buscarEstudiante(estudiantes, estudiante, nombreEstudiante) ==1){
+                            if(buscar.buscarLibroEstudiante(estudiante, libro)==  1){
+                                estudiante.quitarLibroEstudiante(libro);
+                                estudiante.calcularSaldo(estudiante, fechaActual);
+                                vaciarCampos();
+                            }
+                        }
                     }
                 }
             }    
@@ -281,8 +299,6 @@ public class RegistrarDevolucion extends javax.swing.JDialog {
         txtCdNumero.setText("");
     }
     
-      public int codigoNumero;
-    public int codigoLetra;
     
     private void validarCodigo(){
         if(txtCdNumero.getText().isEmpty()){
@@ -358,13 +374,13 @@ public class RegistrarDevolucion extends javax.swing.JDialog {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCalcularSaldo;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCarnet;
     private javax.swing.JLabel lblTotal;
+    private javax.swing.JLabel nombreEstudiante;
     private javax.swing.JLabel tituloLbl;
     private javax.swing.JTextField txtCdLetra;
     private javax.swing.JTextField txtCdNumero;

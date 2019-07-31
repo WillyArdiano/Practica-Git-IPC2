@@ -3,7 +3,6 @@ package practica1git.Archivos;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
@@ -21,20 +20,18 @@ public class Archivos {
     //metodos para los estudiantes en archivos
     
     public void guardarEstudiante(Estudiante estudiante){ 
-        System.out.println("0");
+
+       
+        
         try {
             FileOutputStream grabador = new  FileOutputStream("DatosArchivos/estudiantes/"+(estudiante.getCarnet())+".txt");
-            System.out.println("1");
+            
             grabador.write((Integer.toString(estudiante.getCarnet())+"\n").getBytes());
-            System.out.println("2");
             grabador.write((estudiante.getNombre()+"\n").getBytes());
-            System.out.println("3");
             grabador.write((Integer.toString(estudiante.getCodigoCarrera())+"\n").getBytes());
-            System.out.println("4");
-            grabador.write((estudiante.getFechaNacimiento()+"\n").getBytes());
-            System.out.println("5");
-        } catch (Exception e ) {
-            System.out.println("sd");
+            
+            
+        } catch (Exception e) {
         }
         
         

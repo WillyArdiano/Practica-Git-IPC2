@@ -8,6 +8,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
+
 public class Prestamo implements Serializable{
     
     private String codigoLibro;
@@ -31,11 +32,6 @@ public class Prestamo implements Serializable{
         this.carnet = carnet;
     }
     
-    public void validarPrestamo(Estudiante estudiante){
-        if(estudiante.getNumeroLibros() ==3){
-            JOptionPane.showMessageDialog(null,"La operacion no se pudo realizar, ya cuenta con 3 libros prestados");
-        }
-    }
 
     public int getMora() {
         return mora;
@@ -52,6 +48,5 @@ public class Prestamo implements Serializable{
     public void setFechaPrestamo(String fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
-    
    
 }
