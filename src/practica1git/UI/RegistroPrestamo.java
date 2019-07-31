@@ -246,13 +246,13 @@ public class RegistroPrestamo extends javax.swing.JDialog {
                             fecha = LocalDateTime.now();
                             }
                         }
-                        
                     }
                 }
            }
        }
    }
    
+    // vaciar campos
     private void vaciarCampos(){
         if(verificador==0){
             txtNoCarnet.setText("");
@@ -261,8 +261,7 @@ public class RegistroPrestamo extends javax.swing.JDialog {
         txtCdNumero.setText("");
     }
     
-    //private void vaciarCodigo(){
-   
+
    
     
    public int carnet;
