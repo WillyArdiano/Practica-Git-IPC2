@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import practica1git.Archivos.Archivos;
 import practica1git.Backend.Buscador;
 import practica1git.Backend.Estudiante;
 import practica1git.Backend.Libro;
@@ -18,11 +19,12 @@ public class RegistroPrestamo extends javax.swing.JDialog {
      * @param parent
      */
     private int verificador =0;
-    protected LocalDateTime fecha;
+    LocalDate hoy = LocalDate.now();
     protected Prestamo nuevoPrestamo;
     protected Buscador buscar= new Buscador();
     protected Estudiante estudiante;
     protected Libro libro;
+    protected Archivos archivo = new Archivos();
     protected ArrayList <Estudiante> estudiantes;
     
     public RegistroPrestamo(java.awt.Frame parent) {
@@ -239,13 +241,17 @@ public class RegistroPrestamo extends javax.swing.JDialog {
                     libro.setCodigo(codigo);
                     camposVacios();
                     if(verificador ==2){
-                        if(buscar.buscarEstudiante(estudiantes, estudiante, nombreAlumnotxt)==1){
-                            if(buscar.buscarLibroEstudiante(estudiante, libro)==1){
-                            JOptionPane.showMessageDialog(null,"El prestamo se ha realizado con exito");
-                            vaciarCampos();
-                            fecha = LocalDateTime.now();
-                            }
-                        }
+                       // if(buscar.buscarEstudiante(estudiantes, estudiante, nombreAlumnotxt)!=null){
+                            //estudiante = buscar.buscarEstudiante(estudiantes, estudiante, nombreAlumnotxt);
+                            //if(buscar.buscarLibroEstudiante(estudiante, libro)==1){
+                                nuevoPrestamo.setCarnet(estudiante.getCarnet());
+                                nuevoPrestamo.setCodigoLibro(codigo);
+                                nuevoPrestamo.setFechaPrestamo(hoy.toString());
+                                archivo.GuardarPrestamo(nuevoPrestamo);
+                                JOptionPane.showMessageDialog(null,"El prestamo se ha realizado con exito");
+                                vaciarCampos();
+                            //}
+                       // }
                     }
                 }
            }

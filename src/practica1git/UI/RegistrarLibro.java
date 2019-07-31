@@ -409,7 +409,6 @@ public class RegistrarLibro extends javax.swing.JDialog {
                                 }
                                 
                                 if(verificador == 2 ){
-                                    
                                     archivoLibro.guardarLibro(libro);
                                     this.setVisible(false);
                                     vaciarCampos();

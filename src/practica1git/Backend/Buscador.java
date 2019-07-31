@@ -7,19 +7,19 @@ import javax.swing.JLabel;
 public class Buscador {
     
     
-    public int buscarEstudiante(ArrayList <Estudiante> estudiantes, Estudiante estudiante, JLabel nombreEstudiante){
+    public Estudiante buscarEstudiante(ArrayList <Estudiante> estudiantes, Estudiante estudiante, JLabel nombreEstudiante){
         for(int i = 0; i < estudiantes.size(); i++){
             if (estudiantes.get(i).getCarnet() == estudiante.getCarnet() ){
                 System.out.println("se ha encontrado el estudiante");
                 nombreEstudiante.setText(estudiante.getNombre());
-                return 1;
+                estudiante = estudiantes.get(i);
+                return estudiante;
             } else{
                 System.out.println("estudiante no encontrado");
                 nombreEstudiante.setText("*****************************");
-                return 0;
             }  
         } 
-        return 3;
+        return estudiante = null;
     }
     
     public int buscarLibroEstudiante(Estudiante estudiante, Libro libro){
