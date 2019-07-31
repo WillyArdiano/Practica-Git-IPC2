@@ -9,22 +9,18 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-
 /**
  *
  * @author astridmc
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
+    RegistrarLibro registrarLibro = new RegistrarLibro(this);
     RegistrarEstudiante registrarEstudiante = new RegistrarEstudiante(this);
     RegistroPrestamo registroPrestamo = new RegistroPrestamo(this);
     RegistrarDevolucion regisrarDevolucion = new RegistrarDevolucion(this);
-    RegistrarLibro registrarLibro = new RegistrarLibro(this);
-    Importaciones importaciones;
     public VentanaPrincipal() {
         initComponents();
         Diseño();
-        importaciones = new Importaciones(this, true);
-
     }
 
     /**
@@ -194,7 +190,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-
                                 .addComponent(btnRegistrarLibro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnregistrarLibroArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnRegistrarEstudiante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -249,7 +244,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(fondoTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(btnRegistrarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-
+                .addGap(40, 40, 40))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -273,9 +269,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         regisrarDevolucion.setVisible(true);
     }//GEN-LAST:event_btnDevolucionActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 
-    }                                        
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void btnRegistrarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarLibroActionPerformed
       
@@ -292,24 +288,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btnregistrarLibroArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarLibroArchivoActionPerformed
         
     }//GEN-LAST:event_btnregistrarLibroArchivoActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        importaciones.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
   
 
     protected void Diseño(){
@@ -320,23 +298,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         logoLbl.setIcon(new ImageIcon(logotipo.getImage().getScaledInstance(logoLbl.getWidth(),logoLbl.getHeight(), Image.SCALE_SMOOTH)));
     }
 
-
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDevolucion;
     private javax.swing.JButton btnPrestamo;
     private javax.swing.JButton btnRegistrarEstudiante;
     private javax.swing.JButton btnRegistrarLibro;
     private javax.swing.JButton btnregistrarLibroArchivo;
-
-    private Importaciones importaciones;
-    
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel fondoTitulo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;

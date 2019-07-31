@@ -32,11 +32,6 @@ public class Prestamo implements Serializable{
         this.carnet = carnet;
     }
     
-    public void validarPrestamo(Estudiante estudiante){
-        if(estudiante.getNumeroLibros() ==3){
-            JOptionPane.showMessageDialog(null,"La operacion no se pudo realizar, ya cuenta con 3 libros prestados");
-        }
-    }
 
     public int getMora() {
         return mora;
