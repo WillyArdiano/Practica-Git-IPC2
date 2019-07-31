@@ -13,6 +13,7 @@ public class Estudiante implements Serializable {
     private int numeroLibros = 0;
     private int deuda =0;
     private LocalDate fechaPrestamo;
+    private String fechaNacimiento;
     
     public int getCarnet() {
         return carnet;
@@ -61,6 +62,16 @@ public class Estudiante implements Serializable {
     public void setFechaPrestamo(LocalDate fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
+
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+    
+    
     
      public int calcularSaldo(Estudiante estudiante, LocalDate fechaActual){
         fechaActual = LocalDate.now();

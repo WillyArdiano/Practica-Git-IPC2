@@ -2,6 +2,7 @@
 package practica1git.Backend;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -11,7 +12,7 @@ public class Libro implements Serializable{
     private String autor;
     private String codigo;
     private int cantidad;
-    private Date fechaPublicacion;
+    private String fechaPublicacion;
     private String editorial;
 
     public String getTitulo() {
@@ -46,11 +47,11 @@ public class Libro implements Serializable{
         this.cantidad = cantidad;
     }
 
-    public Date getFechaPublicacion() {
+    public String getFechaPublicacion() {
         return fechaPublicacion;
     }
 
-    public void setFechaPublicacion(Date fechaPublicacion) {
+    public void setFechaPublicacion(String fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
     }
 

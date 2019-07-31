@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import practica1git.Backend.Prestamo;
 
 public class RegistroPrestamo extends javax.swing.JDialog {
 
@@ -14,6 +15,7 @@ public class RegistroPrestamo extends javax.swing.JDialog {
      */
     private int verificador =0;
     protected LocalDateTime fecha;
+    protected Prestamo nuevoPrestamo;
     
     public RegistroPrestamo(java.awt.Frame parent) {
         super(parent, true);
@@ -192,7 +194,7 @@ public class RegistroPrestamo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNoCarnetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNoCarnetActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtNoCarnetActionPerformed
 
     private void txtCdNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCdNumeroActionPerformed
@@ -217,6 +219,7 @@ public class RegistroPrestamo extends javax.swing.JDialog {
 
    public void validarDatos(){
        verificador =0;
+       nuevoPrestamo = new Prestamo();
        if(verificador==0){
            validarCarnet();
            if(verificador==2){

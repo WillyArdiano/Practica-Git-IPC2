@@ -6,6 +6,8 @@
 package practica1git.UI;
 
 import javax.swing.JOptionPane;
+import practica1git.Archivos.Archivos;
+import practica1git.Backend.Estudiante;
 
 /**
  *
@@ -13,11 +15,17 @@ import javax.swing.JOptionPane;
  */
 public class RegistrarEstudiante extends javax.swing.JDialog {
 
+    private Archivos archivoEstudiante;
     private int verificador =0;
+    private Estudiante estudiante;
+    private String nombre;
+    private String apellido;
+    
     public RegistrarEstudiante(java.awt.Frame parent) {
         super(parent, true);
         initComponents();
         setLocationRelativeTo(null);
+        estudiante = new Estudiante();
     }
 
     /**
@@ -304,22 +312,44 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
 
     private void validar(){
         verificador =0;
+        
+        nombre = txtNombreEstudiante.getText();
+        apellido = txtApellido.getText();
         if(verificador==0){
             validarCarnet();
             if(verificador ==2){
+                estudiante.setCarnet(carnet);
                 validarCamposVacios();
                 System.out.println("camposVacios");
                 if(verificador ==2){
+                    estudiante.setNombre( nombre + " "+ apellido);
+                    System.out.println("hgh");
                     System.out.println("carrera");
                     reconocerCarrera();
                     validarCodCarrera();
                     if(verificador==2){
+                        estudiante.setCodigoCarrera(codCarrera);
                         if(!txtAño.getText().isEmpty()){
                             validarFechaNacimiento();
+                            if(verificador == 2){
+                                estudiante.setFechaNacimiento(año + "-" +mes+"-"+dia);
+                            }
+                        }else if(txtAño.getText().isEmpty()){
+                            estudiante.setFechaNacimiento(año + "-" +mes+"-"+dia);
                         }
                         if(verificador==2){
-                            this.setVisible(false);
-                            vaciarCampos();
+                            System.out.println(estudiante.getCarnet());
+                            System.out.println(estudiante.getNombre());
+                            System.out.println(estudiante.getFechaNacimiento());
+                            System.out.println(estudiante.getCodigoCarrera());
+                            if(estudiante != null){
+                                archivoEstudiante = new Archivos();
+                                archivoEstudiante.guardarEstudiante(estudiante);
+                                vaciarCampos();
+                                nombreCarreratxt.setText("");
+                                this.setVisible(false);
+                            }
+                            
                         }
                     }
                 }
@@ -352,21 +382,23 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
         txtNombreEstudiante.setText("");
     }
     
+    
     public void validarCamposVacios(){
         if(txtNombreEstudiante.getText().isEmpty()){
             verificador =1;
             JOptionPane.showMessageDialog(null,"Nombre requerido");
-            System.out.println("vacio");
-        }else if(!txtNombreEstudiante.getText().isEmpty()){
+        }
+        if(!txtNombreEstudiante.getText().isEmpty()){
             verificador =2;
         }
-        
-        if(txtApellido.getText().isEmpty()){
-            verificador =1;
-            JOptionPane.showMessageDialog(null,"Apellido requerido");
-            System.out.println("vacio");
-        }else if(txtApellido.getText().isEmpty()==false){
-            verificador = 2;
+        if(verificador==2){
+            if(txtApellido.getText().isEmpty()){
+                verificador =1;
+                JOptionPane.showMessageDialog(null,"Apellido requerido");
+                System.out.println("vacio");
+            } if(!txtApellido.getText().isEmpty()){
+                verificador = 2;
+            }
         }
     }
     
@@ -413,16 +445,24 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
         }
     }
     
-    public int dia;
-    public int mes;
-    public int año;
+    private void rellenarCampoVacio(){
+        if(txtDia.getText().isEmpty() || txtMes.getText().isEmpty()||txtAño.getText().isEmpty()){
+            txtDia.setText("00");
+            txtMes.setText("00");
+            txtAño.setText("0000");
+        } 
+    }
+    
+    public int dia=0;
+    public int mes=0;
+    public int año=0;
     private void validarFechaNacimiento(){
         try{
         	dia = Integer.parseInt(txtDia.getText());
-            if (dia > 31){
+            if (dia > 31 || txtDia.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null,"Dia no valido o Campo sin llenar");
                  verificador =1;
-            } else if (dia < 31 && !txtCodCarrera.getText().isEmpty()){
+            } else if (dia < 31 && !txtDia.getText().isEmpty()){
                 verificador =2;
             }
     	}catch(NumberFormatException ex){
@@ -430,11 +470,11 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
                  verificador =1;
     	}
         try{
+            mes = Integer.parseInt(txtMes.getText());
             if(mes > 12){
-                mes = Integer.parseInt(txtMes.getText());
                 JOptionPane.showMessageDialog(null,"Mes no valido o campo sin llenar");
-                 verificador =1;
-            }else if(mes < 12 && !txtCodCarrera.getText().isEmpty()){
+                verificador =1;
+            }else if(mes < 12 && !txtMes.getText().isEmpty()){
                 verificador =2;
             }
     	}catch(NumberFormatException ex){
@@ -446,7 +486,7 @@ public class RegistrarEstudiante extends javax.swing.JDialog {
             año = Integer.parseInt(txtAño.getText());
             if(txtAño.getText().length() != 4  ){
                 JOptionPane.showMessageDialog(null,"Año no valido o campo sin llenar");
-            }else if(txtAño.getText().length() == 4 && !txtCodCarrera.getText().isEmpty() ){
+            }else if(txtAño.getText().length() == 4 && !txtAño.getText().isEmpty() ){
                 verificador =2;
             }
     	}catch(NumberFormatException ex){

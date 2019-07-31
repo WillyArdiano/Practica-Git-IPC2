@@ -13,6 +13,7 @@ public class Prestamo implements Serializable{
     private String codigoLibro;
     private int carnet;
     protected int mora =10;
+    protected String fechaPrestamo;
 
     public String getCodigoLibro() {
         return codigoLibro;
@@ -34,6 +35,22 @@ public class Prestamo implements Serializable{
         if(estudiante.getNumeroLibros() ==3){
             JOptionPane.showMessageDialog(null,"La operacion no se pudo realizar, ya cuenta con 3 libros prestados");
         }
+    }
+
+    public int getMora() {
+        return mora;
+    }
+
+    public void setMora(int mora) {
+        this.mora = mora;
+    }
+
+    public String getFechaPrestamo() {
+        return fechaPrestamo;
+    }
+
+    public void setFechaPrestamo(String fechaPrestamo) {
+        this.fechaPrestamo = fechaPrestamo;
     }
     
    

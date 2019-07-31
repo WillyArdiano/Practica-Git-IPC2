@@ -3,15 +3,19 @@ package practica1git.UI;
 import java.time.LocalDate;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import practica1git.Archivos.Archivos;
 import practica1git.Backend.Libro;
 public class RegistrarLibro extends javax.swing.JDialog {
     
     private int verificador =0;
     private String codigo;
     private Libro libro;
-    
+    Archivos archivoLibro = new Archivos();
     public RegistrarLibro(java.awt.Frame parent) {
         super(parent, true);
+        
+                
+                
         initComponents();
         
         setLocationRelativeTo(null);
@@ -389,6 +393,8 @@ public class RegistrarLibro extends javax.swing.JDialog {
     }//GEN-LAST:event_btnGuardarActionPerformed
     
     protected void validarValores(){
+        
+       
         libro = new Libro();
         verificador =0;
         if(verificador ==0){
@@ -407,8 +413,18 @@ public class RegistrarLibro extends javax.swing.JDialog {
                                 libro.setCantidad(noCopias);
                                 if(!txtAño.getText().isEmpty()){
                                     validarFecha();
+                                    if(verificador == 2){
+                                        libro.setFechaPublicacion(txtAño.getText() +"-" + txtMes.getText() + "-"+ txtDia.getText());
+                                    }
                                 }
+                                
+                                if(!txtNombreEditorial.getText().isEmpty()){
+                                    libro.setEditorial(txtNombreEditorial.getText());
+                                }
+                                
                                 if(verificador == 2 ){
+                                    
+                                    archivoLibro.guardarLibro(libro);
                                     this.setVisible(false);
                                     vaciarCampos();
                                 }
@@ -538,6 +554,8 @@ public class RegistrarLibro extends javax.swing.JDialog {
             verificador = 2;
         }
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
